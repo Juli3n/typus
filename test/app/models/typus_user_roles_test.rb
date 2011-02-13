@@ -21,7 +21,6 @@ class TypusUserRolesTest < ActiveSupport::TestCase
                   "Comment",
                   "Dog",
                   "Entry",
-                  "Git",
                   "ImageHolder",
                   "Invoice",
                   "Order",
@@ -29,11 +28,9 @@ class TypusUserRolesTest < ActiveSupport::TestCase
                   "Post",
                   "Project",
                   "ProjectCollaborator",
-                  "Status",
                   "TypusUser",
                   "User",
-                  "View",
-                  "WatchDog"]
+                  "View"]
       assert_equal expected, @typus_user.resources.map(&:first).sort
     end
 
@@ -44,10 +41,6 @@ class TypusUserRolesTest < ActiveSupport::TestCase
     should "have access to all actions on models" do
       models = %w(Asset Category Comment Page Post TypusUser View)
       %w(create read update destroy).each { |a| models.each { |m| assert @typus_user.can?(a, m) } }
-    end
-
-    should "verify we can perform action on resource" do
-      assert @typus_user.can?('index', 'Status', { :special => true })
     end
 
     should "verify we cannot perform action on resource" do
@@ -67,7 +60,7 @@ class TypusUserRolesTest < ActiveSupport::TestCase
     end
 
     should "verify models access" do
-      expected = %w(Category Comment Git Post TypusUser View)
+      expected = %w(Category Comment Post TypusUser View)
       assert_equal expected, @typus_user.resources.map(&:first).sort
     end
 

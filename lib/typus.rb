@@ -149,17 +149,6 @@ module Typus
       end
     end
 
-    # Lists resources, which are tableless models.
-    def resources
-      if roles = Typus::Configuration.roles
-        roles.keys.map do |key|
-          Typus::Configuration.roles[key].keys
-        end.flatten.sort.uniq.delete_if { |x| models.include?(x) }
-      else
-        []
-      end
-    end
-
     # Lists models under <tt>app/models</tt>.
     def detect_application_models
       model_dir = Rails.root.join("app/models")

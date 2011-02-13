@@ -40,7 +40,6 @@ class ConfigurationTest < ActiveSupport::TestCase
     Typus.expects(:config_folder).at_least_once.returns("test/fixtures/config/default")
     assert_not_equal Hash.new, Typus::Configuration.roles!
     assert_not_equal Hash.new, Typus::Configuration.config!
-    assert Typus.resources.empty?
   end
 
 end

@@ -102,10 +102,6 @@ class TypusTest < ActiveSupport::TestCase
     assert_equal expected, Typus.models
   end
 
-  should "verify resources class_method" do
-    assert_equal %w(Git Status WatchDog), Typus.resources
-  end
-
   context "user_class" do
 
     should "return default value" do

@@ -19,10 +19,6 @@ Rails.application.routes.draw do
       match "#{resource}(/:action(/:id(.:format)))", :controller => resource
     end
 
-    Typus.resources.map { |i| i.underscore }.each do |resource|
-      match "#{resource}(/:action(/:id(.:format)))", :controller => resource
-    end
-
   end
 
 end
